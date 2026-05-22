@@ -301,6 +301,54 @@
     text-align: center;
   }
 
+  /* ─── Print button ─── */
+  .print-button {
+    position: fixed;
+    top: 1.5rem;
+    right: 1.5rem;
+    z-index: 50;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1.1rem;
+    background: var(--surface);
+    color: var(--ink);
+    border: 1px solid var(--rule);
+    border-radius: 999px;
+    font-family: var(--sans);
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 4px 12px rgba(0, 0, 0, 0.04);
+    transition: all 0.18s ease;
+  }
+  .print-button:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06), 0 8px 20px rgba(0, 0, 0, 0.06);
+  }
+  .print-button:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
+  .print-button svg {
+    width: 14px;
+    height: 14px;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    fill: none;
+  }
+
+  @media (max-width: 640px) {
+    .print-button {
+      top: 1rem;
+      right: 1rem;
+      padding: 0.5rem 0.9rem;
+      font-size: 0.8rem;
+    }
+  }
+
   @media (max-width: 640px) {
     .page { padding: 2.5rem 1.25rem 3rem; }
     .entry-header { flex-direction: column; gap: 0.25rem; }
@@ -316,7 +364,7 @@
   @media print {
     body { background: white; color: black; font-size: 10.5pt; }
     .page { padding: 0.5in; max-width: 100%; }
-    .skip-link { display: none; }
+    .skip-link, .print-button { display: none; }
     section, .entry { break-inside: avoid; page-break-inside: avoid; }
     h1.name { font-size: 24pt; }
     .entry-title { font-size: 13pt; }
@@ -336,6 +384,13 @@
 
 <a href="#main" class="skip-link">Skip to content</a>
 
+<button class="print-button" onclick="window.print()" aria-label="Save resume as PDF">
+  <svg viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14"/>
+  </svg>
+  Save as PDF
+</button>
+
 <main id="main" class="page">
 
   <header class="intro">
@@ -350,7 +405,8 @@
   <section aria-labelledby="summary-heading">
     <h2 id="summary-heading" class="section-title">Summary</h2>
     <p class="summary">
-Physicist turned learning experience designer with 10+ years building rigorous, applied online courses for adult and professional audiences on Coursera and edX. Expertise in guiding subject-matter experts through technical course creation and holding the quality bar on accuracy, engagement, and learning effectiveness. Active practitioner of AI-powered instructional design — prompt engineering, LLM-based assessment, and AI-enabled curriculum.    </p>
+      Physicist turned learning experience designer with 10+ years building rigorous, applied online courses for adult and professional audiences on <strong>Coursera and edX</strong>. Deep expertise guiding subject-matter experts through technical course creation and holding the quality bar on accuracy, engagement, and learning effectiveness. Active practitioner of <strong>AI-powered instructional design</strong> — prompt engineering, LLM-based assessment, and AI-enabled curriculum.
+    </p>
   </section>
 
   <section aria-labelledby="skills-heading">
